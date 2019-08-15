@@ -1,6 +1,6 @@
 # php-simple-crud
 
 ### Technologies
-php-oop
-jquery
-mysql
+php-oop <br />
+jquery <br />
+mysql <br />
