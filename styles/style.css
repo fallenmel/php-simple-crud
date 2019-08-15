@@ -1,0 +1,11 @@
+#id {
+  width: 100%;
+  max-width: 980px;
+  margin: auto;
+  display: block;
+  padding: 0 20px;
+}
+
+#page-title{
+  padding: 50px 0;
+}

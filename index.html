@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Simple CRUD</title>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link href="styles/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container" id="app">
+    <div class="row" id="page-title">
+      <h1>Simple Crud PHP - JQUERY - BOOTSTRAP</h1>
+    </div>
+    <div class="row" id="action-wrapper">
+      <button class="btn btn-sm btn-primary" id="btn-add-member">
+        Add Member
+      </button>
+    </div>
+
+    <table></table>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="form-modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Member Detail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="member-form">
+          <div class="modal-body">
+
+            <div class="form-group">
+              <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+                placeholder="sample@me.com" required>
+              <input type="text" name="first_name" class="form-control" id="first_name" 
+                placeholder="first name" required>
+              <input type="text" name="last_name" class="form-control" id="last_name" 
+                placeholder="last name" required>
+              <input type="text" name="number" class="form-control" id="number" 
+                placeholder="number" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+              Cancel
+            </button>
+            <input type="hidden" name="mode" value="add" />
+            <input type="submit" class="btn btn-primary btn-sm" value="Add" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
