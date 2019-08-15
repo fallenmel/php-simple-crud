@@ -31,6 +31,24 @@ const getAllMember = () => {
   });
 };
 
+const fetchSingle = (id, callback) => {
+  const data = {
+    mode : 'fetch',
+    id,
+  }
+
+  $.post({
+    type: "POST",
+    url: "api/index.php",
+    data: data,
+    success: response => {
+      callback(response);
+    },
+    error: (x,y,m) => {
+      console.log(x,y,m);
+    }
+  });
+}
 $(document).ready(() => {
   getAllMember();
 
@@ -40,6 +58,11 @@ $(document).ready(() => {
 
   $("#form-modal").on("hidden.bs.modal", () => {
     //clear form data
+    $('#member-form #btn-submit').val('add');
+
+    //set back to default
+    $('#member-form #mode').val('add');
+    $('#member-form #target').val('');
   });
 
   //form submit
@@ -65,10 +88,49 @@ $(document).ready(() => {
 
   //table buttons
   $("body").on("click", "#tbl-btn-update", e => {
-    console.log($(e.target).data("id"));
+    const id = $(e.target).data("id");
+
+    fetchSingle(id, (response) => {
+      console.log('response', response);
+      const data = response[0];
+
+      //set button label to update
+      $('#member-form #btn-submit').val('update')
+
+      //set formData;
+      $('#member-form #email').val(data.email);
+      $('#member-form #first_name').val(data.first_name);
+      $('#member-form #last_name').val(data.last_name);
+      $('#member-form #number').val(data.mobile_number);
+
+      //set reference deta
+      $('#member-form #mode').val('update');
+      $('#member-form #target').val(id);
+
+      //show form
+      $("#form-modal").modal("toggle");
+    })
   });
 
   $("body").on("click", "#tbl-btn-remove", e => {
-    console.log($(e.target).data("id"));
+    const id = $(e.target).data("id");
+
+    const data = {
+      mode : 'destroy',
+      id,
+    }
+
+    $.post({
+      type: "POST",
+      url: "api/index.php",
+      data: data,
+      success: response => {
+        getAllMember();
+      },
+      error: (x,y,m) => {
+        console.log(x,y,m);
+      }
+    });
+
   });
 });

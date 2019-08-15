@@ -31,11 +31,22 @@ if($type == 'GET'){
   }
 
   if($data['mode'] == 'update'){
-    echo json_encode('modify uer here');
+    $member = new user();
+    $member->setDB($conn);
+    echo json_encode($member->update((object) $data));
   }
 
   if($data['mode'] == 'destroy'){
-    echo json_encode('modify uer here');
+    // echo json_encode('modify uer here');
+    $member = new user();
+    $member->setDB($conn);
+    echo json_encode($member->destroy($data['id']));
+  }
+
+  if($data['mode'] == 'fetch'){
+    $member = new user();
+    $member->setDB($conn);
+    echo json_encode($member->fetch($data['id']));
   }
 }
 

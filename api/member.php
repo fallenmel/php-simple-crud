@@ -69,21 +69,21 @@
     }
 
 
-    function update($id,$updates){
-      $sql = "UPDATE users SET first_name='$updates->first_name',  last_name='$updates->last_name', email='$updates->email', mobile_number='$updates->number' WHERE id = '$id' ";
-      if(mysqli_query($link, $sql)){
+    function update($updates){
+      $sql = "UPDATE users SET first_name='$updates->first_name',  last_name='$updates->last_name', email='$updates->email', mobile_number='$updates->number' WHERE id = '$updates->id' ";
+      if(mysqli_query($this->db, $sql)){
         return "Records were updated successfully.";
       } else {
-        return "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+        return "ERROR: Could not able to execute $sql. " . mysqli_error($this->db);
       }
     }
 
     function destroy($id){
       $sql = "DELETE FROM users WHERE id='$id'";
-      if(mysqli_query($link, $sql)){
+      if(mysqli_query($this->db, $sql)){
         return "User successfully remove.";
       } else {
-        return "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+        return "ERROR: Could not able to execute $sql. " . mysqli_error($this->db);
       }
     }
      
